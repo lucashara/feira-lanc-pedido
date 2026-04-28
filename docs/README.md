@@ -1,88 +1,48 @@
 # feira-lanc-pedido
 
+## Identificação
+- Tipo: Frontend (Vite + JS vanilla)
+- Status: Inativo (uso pontual em edição da feira; mantido para reuso)
+
+## Área e setor
+- Área responsável: TI
+- Setor atendido: Comercial
+
 ## Objetivo
+Frontend de **lançamento de pedidos** da feira interna **Experiência 360** do Grupo BRF1, usado por fornecedores e vendedores autorizados. Após autenticação via Cognito, o usuário busca o cliente por CNPJ, preenche os dados do pedido e o sistema valida regras de negócio (faixa de valor mínima/máxima, limite de moedas em até 30% do valor) antes de enviar para a API.
 
-Disponibilizar uma interface web para lançamento de pedidos da campanha Experiência BRF1 por fornecedores ou vendedores autorizados.
+## Necessidade que originou
+Sem essa interface, lançamentos da feira eram feitos em sistemas dispersos, sem validação local de regras. Era preciso aplicar as regras de negócio ainda no frontend (faixa de valor, limite de moedas) e oferecer uma busca rápida por CNPJ, evitando devoluções da API por dado inválido.
 
-## Problema que resolve
+## Como acessar / executar
+- Modo: SPA estática servida por Nginx durante a feira
+- Caminho de execução: `C:\Projetos\feira-lanc-pedido`
+- Build local: `npm run build`
+- Endpoint da API: `https://api.grupobrf1.com:10000`
+- Serviço Windows / NSSM: Não se aplica (frontend estático)
+- Logs: logs do Nginx do host
 
-Evita lançamentos manuais dispersos e aplica validações de negócio na entrada dos pedidos antes do envio para a API.
+## Stack e integrações
+- Build: Vite
+- Linguagem: JavaScript vanilla
+- Estilo: HTML/CSS + Bootstrap
+- Autenticação: Amazon Cognito
+- Sistemas integrados: API da campanha BRF1 (`Auth-BRF1`) — endpoints `consultarclienteporcnpj` e `lancarpedido`
 
-## Áreas ou setores atendidos
+## Inovação e avanço técnico
+- **Regras de negócio aplicadas no cliente** (valor mínimo/máximo, limite de moedas a 30% do valor) reduzem rejeição da API
+- Busca de cliente por CNPJ preenche automaticamente o formulário
+- Reuso da identidade visual padrão da feira
 
-- Comercial
-- Trade marketing
-- Operação da campanha
+## Incertezas / desafios técnicos
+- Manter as regras do frontend em sincronia com o backend (regras dobradas)
+- Política de retentativa em falha do Cognito
+- Sazonalidade: ativo apenas durante edições da feira
 
-## Público principal
+## Resultados / ganhos
+- Lançamento de pedidos da feira centralizado e validado no frontend
+- Mesmo template reaproveitável em próximas edições
+- Não mensurado formalmente
 
-Usuários internos ou parceiros responsáveis por registrar pedidos da campanha.
-
-## Escopo resumido
-
-Frontend web em Vite com autenticação, busca de cliente por CNPJ e formulário de lançamento de pedido com regras de valor e quantidade de moedas.
-
-## Funcionamento lógico resumido
-
-- Origem dos dados: API da campanha em `https://api.grupobrf1.com:10000`.
-- Entrada: credenciais do usuário, CNPJ do cliente e dados do pedido.
-- Processamento principal: autentica o usuário, busca dados do cliente por CNPJ, valida faixas de valor do pedido e limite de moedas, e envia o pedido.
-- Saída: confirmação ou erro do lançamento do pedido.
-- Integrações: rotas de autenticação e endpoints `consultarclienteporcnpj` e `lancarpedido`.
-- Regra principal de negócio: o valor do pedido deve respeitar faixa mínima e máxima, e a quantidade de moedas não pode ultrapassar 30% do valor do pedido.
-- Fluxo resumido: usuário autentica -> informa CNPJ -> frontend preenche dados do cliente -> valida regras -> envia pedido para a API.
-
-## Tecnologias principais
-
-- Vite
-- JavaScript
-- HTML/CSS
-- Bootstrap
-- Amazon Cognito
-
-## Como executar
-
-Build de produção:
-
-```bash
-npm run build
-```
-
-## Integrações
-
-- API `https://api.grupobrf1.com:10000`
-- autenticação baseada em Amazon Cognito
-
-## Publicação web
-
-### Nginx
-
-```nginx
-server {
-    listen 80;
-    server_name <subdominio>;
-
-    root /var/www/feira-lanc-pedido/dist;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-### Cloudflare
-
-- criar registro DNS do subdomínio
-- apontar para o servidor da aplicação
-- ajustar proxy e SSL conforme o padrão do ambiente
-
-## Status de produção
-
-Há indício de uso como frontend operacional da campanha. Solicitante original, URL final e período de uso ainda precisam de confirmação retroativa.
-
-## Pendências para registro retroativo
-
-- Confirmar solicitante original
-- Confirmar URL ou subdomínio final
-- Confirmar período de uso em produção
+## Equipe
+- Responsável técnico: TI
