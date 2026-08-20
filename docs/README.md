@@ -2,7 +2,7 @@
 
 ## Identificação
 - Tipo: Frontend (Vite + JS vanilla)
-- Status: Inativo (uso pontual em edição da feira; mantido para reuso)
+- Status: Desativado em 20/08/2026, arquivado em `_DESATIVADOS` (ver Desativação e reativação)
 
 ## Área e setor
 - Área responsável: TI
@@ -27,7 +27,7 @@ Sem essa interface, lançamentos da feira eram feitos em sistemas dispersos, sem
 - Linguagem: JavaScript vanilla
 - Estilo: HTML/CSS + Bootstrap
 - Autenticação: Amazon Cognito
-- Sistemas integrados: API da campanha BRF1 (`Auth-BRF1`) — endpoints `consultarclienteporcnpj` e `lancarpedido`
+- Sistemas integrados: API da campanha BRF1 (`Auth-BRF1`) · endpoints `consultarclienteporcnpj` e `lancarpedido`
 
 ## Inovação e avanço técnico
 - **Regras de negócio aplicadas no cliente** (valor mínimo/máximo, limite de moedas a 30% do valor) reduzem rejeição da API
@@ -46,3 +46,16 @@ Sem essa interface, lançamentos da feira eram feitos em sistemas dispersos, sem
 
 ## Equipe
 - Responsável técnico: TI
+
+## Desativação e reativação
+
+Desativado em 20/08/2026 e arquivado em `C:\Projetos\_DESATIVADOS\feira-lanc-pedido`.
+
+**Motivo**
+
+Frontend de uso pontual em edição de feira, sem serviço nem bloco Nginx no servidor.
+
+**Para reativar**
+
+1. Mover a pasta de volta para `C:\Projetos\feira-lanc-pedido`.
+2. Rodar `yarn install` e `yarn build`.
