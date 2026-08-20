@@ -1,0 +1,19 @@
+# Fim de linha normalizado: LF no repositório, conversão automática no checkout.
+* text=auto eol=lf
+
+# Script que o Windows exige com CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binário: nunca normalizar
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.xlsx binary
+*.xls binary
+*.zip binary
+*.woff binary
+*.woff2 binary
