@@ -65,4 +65,5 @@ Frontend de uso pontual em edição de feira, sem serviço nem bloco Nginx no se
 O workflow `main_feira-lanc-pedido.yml`, que publicava no Azure Web App, está desabilitado desde
 20/08/2026: o GitHub reprova a execução automaticamente porque o workflow usa
 `actions/upload-artifact@v3`, descontinuado. Ele falhava a cada push e disparava aviso por e-mail.
-Para voltar, corrigir a causa e rodar `gh workflow enable main_feira-lanc-pedido.yml -R grupobrf1/feira-lanc-pedido`.
+O Azure Web App de destino também já foi excluído, então voltar a publicar exige recriar
+o recurso e a credencial federada antes de rodar `gh workflow enable main_feira-lanc-pedido.yml -R grupobrf1/feira-lanc-pedido`.
