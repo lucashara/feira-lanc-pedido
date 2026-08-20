@@ -59,3 +59,10 @@ Frontend de uso pontual em edição de feira, sem serviço nem bloco Nginx no se
 
 1. Mover a pasta de volta para `C:\Projetos\feira-lanc-pedido`.
 2. Rodar `yarn install` e `yarn build`.
+
+**Deploy pelo GitHub Actions**
+
+O workflow `main_feira-lanc-pedido.yml`, que publicava no Azure Web App, está desabilitado desde
+20/08/2026: o GitHub reprova a execução automaticamente porque o workflow usa
+`actions/upload-artifact@v3`, descontinuado. Ele falhava a cada push e disparava aviso por e-mail.
+Para voltar, corrigir a causa e rodar `gh workflow enable main_feira-lanc-pedido.yml -R grupobrf1/feira-lanc-pedido`.
